@@ -1,0 +1,31 @@
+<?php
+/**
+ * This file is part of the Semaio_CustomSku module.
+ *
+ * See LICENSE.md bundled with this module for license details.
+ *
+ * @category  Semaio
+ * @package   Semaio_CustomSku
+ * @author    semaio GmbH <hello@semaio.com>
+ * @copyright 2016 semaio GmbH (http://www.semaio.com)
+ */
+/**
+ * @var $this Semaio_CustomSku_Block_Adminhtml_Info
+ */
+?>
+<?php if ($_customSku = $this->getCustomSku()): ?>
+    <tr class="border">
+        <td class="">
+            <strong><?php echo $this->__('Custom SKU by customer:'); ?></strong> <?php echo $this->escapeHtml($_customSku); ?>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="last"></td>
+    </tr>
+<?php endif; ?>

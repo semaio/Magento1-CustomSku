@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the Semaio_CustomSku module.
+ *
+ * See LICENSE.md bundled with this module for license details.
+ *
+ * @category  Semaio
+ * @package   Semaio_CustomSku
+ * @author    semaio GmbH <hello@semaio.com>
+ * @copyright 2016 semaio GmbH (http://www.semaio.com)
+ */
+-->
+<config>
+    <modules>
+        <Semaio_CustomSku>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Customer/>
+            </depends>
+        </Semaio_CustomSku>
+    </modules>
+</config>

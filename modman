@@ -1,0 +1,9 @@
+src/app/code/community/Semaio/CustomSku                              app/code/community/Semaio/CustomSku
+src/app/etc/modules/Semaio_CustomSku.xml                             app/etc/modules/Semaio_CustomSku.xml
+src/app/design/adminhtml/default/default/layout/semaio/customsku.xml app/design/adminhtml/default/default/layout/semaio/customsku.xml
+src/app/design/adminhtml/default/default/template/semaio/customsku   app/design/adminhtml/default/default/template/semaio/customsku
+src/app/design/frontend/base/default/layout/semaio/customsku.xml     app/design/frontend/base/default/layout/semaio/customsku.xml
+src/app/design/frontend/base/default/template/semaio/customsku       app/design/frontend/base/default/template/semaio/customsku
+src/app/locale/de_DE/Semaio_CustomSku.csv                            app/locale/de_DE/Semaio_CustomSku.csv
+src/skin/frontend/base/default/semaio/customsku                      skin/frontend/base/default/semaio/customsku
+src/skin/frontend/rwd/default/semaio/customsku                       skin/frontend/rwd/default/semaio/customsku

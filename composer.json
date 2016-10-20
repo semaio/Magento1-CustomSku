@@ -1,0 +1,16 @@
+{
+  "name": "semaio/magento-1customsku",
+  "description": "Allow customers to specify their own SKU for the shop owner products",
+  "type": "magento-module",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Rouven Alexander Rieker",
+      "email": "therouv@googlemail.com"
+    }
+  ],
+  "suggest": {
+    "magento-hackathon/magento-composer-installer": "*"
+  }
+}

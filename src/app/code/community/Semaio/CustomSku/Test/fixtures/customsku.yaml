@@ -1,0 +1,6 @@
+tables:
+  semaio_customsku/customsku:
+    - id: 1
+      customer_id: 1
+      sku: ABC
+      custom_sku: 123456

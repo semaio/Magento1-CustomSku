@@ -1,0 +1,73 @@
+<?php
+/**
+ * This file is part of the Semaio_CustomSku module.
+ *
+ * See LICENSE.md bundled with this module for license details.
+ *
+ * @category  Semaio
+ * @package   Semaio_CustomSku
+ * @author    semaio GmbH <hello@semaio.com>
+ * @copyright 2016 semaio GmbH (http://www.semaio.com)
+ */
+/**
+ * @var $this Semaio_CustomSku_Block_Customer_List
+ */
+$collection = $this->getCollection();
+?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<div class="page-title">
+    <h1><?php echo $this->__('Custom SKUs') ?></h1>
+</div>
+
+<form action="<?php echo $this->getUrl('*/*/save')?>" method="post">
+    <table class="data-table customsku-table" id="my-customsku-table">
+        <col width="1"/>
+        <col width="1"/>
+        <col/>
+        <thead>
+            <tr>
+                <th class="sku"><?php echo $this->__('Our SKU') ?></th>
+                <th class="custom-sku"><?php echo $this->__('Your custom SKU') ?></th>
+                <th class="actions">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if ($collection->getSize()): ?>
+            <?php foreach ($collection as $item): ?>
+                <tr>
+                    <td class="sku"><?php echo $item->getData('sku') ?></td>
+                    <td class="custom-sku">
+                        <input type="text" name=existing[<?php echo $item->getId()?>]" value="<?php echo $item->getData('custom_sku') ?>" />
+                    </td>
+                    <td class="a-center actions">
+                        <span class="nobr">
+                            <?php if ($addToCartUrl = $this->getAddToCartUrl($item->getData('sku'))): ?>
+                                <a href="<?php echo $addToCartUrl ?>"><?php echo $this->__('Add to Cart') ?></a><br />
+                            <?php endif; ?>
+                            <a href="<?php echo $this->getDeleteUrl($item) ?>"><?php echo $this->__('Delete') ?></a>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="3" style="text-align: center">
+                    <?php echo $this->__('You have currently no custom SKU.'); ?>
+                </td>
+            </tr>
+        <?php endif ?>
+        </tbody>
+        <tfoot>
+            <tr class="new-custom-sku">
+                <td><input type="text" name="new[sku]" value="" /></td>
+                <td><input type="text" name="new[custom_sku]" value="" /></td>
+                <td>&nbsp;</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script type="text/javascript">decorateTable('my-customsku-table');</script>
+
+    <div class="buttons-set">
+        <button type="submit" title="<?php echo $this->__('Save Address') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+    </div>
+</form>

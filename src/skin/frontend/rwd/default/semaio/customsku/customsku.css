@@ -1,0 +1,22 @@
+/**
+ * This file is part of the Semaio_CustomSku module.
+ *
+ * See LICENSE.md bundled with this module for license details.
+ *
+ * @category  Semaio
+ * @package   Semaio_CustomSku
+ * @author    semaio GmbH <hello@semaio.com>
+ * @copyright 2016 semaio GmbH (http://www.semaio.com)
+ */
+
+.checkout-custom-sku {
+    white-space: nowrap;
+}
+
+.checkout-custom-sku .label {
+    font-weight: bold;
+}
+
+.customsku-table td input {
+    width: 325px;
+}
