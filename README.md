@@ -5,7 +5,7 @@ Allow customers to specify their own SKU for the products of an online shop.
 
 Facts
 -----
-* Version: 0.0.0
+* Version: 1.0.0
 
 Functionality
 -------------
