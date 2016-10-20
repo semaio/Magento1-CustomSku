@@ -115,7 +115,7 @@ class Semaio_CustomSku_Block_Customer_List extends Mage_Core_Block_Template
      */
     public function hasProductUrl($product)
     {
-        if ($product->getVisibleInSiteVisibilities()) {
+        if ($product->isVisibleInSiteVisibility()) {
             return true;
         }
 
