@@ -33,7 +33,7 @@ class Semaio_CustomSku_Block_Customer_List extends Mage_Core_Block_Template
             /* @var $collection Semaio_CustomSku_Model_Resource_CustomSku_Collection */
             $collection = Mage::getResourceModel('semaio_customsku/customSku_collection');
             $collection->addCustomerFilter($customer);
-            $collection->setOrder('sku');
+            $collection->setOrder('sku', Varien_Data_Collection::SORT_ORDER_ASC);
 
             $this->_collection = $collection;
         }
