@@ -62,6 +62,16 @@
                 </custom_sku>
             </sales_convert_order_item>
         </fieldsets>
+        <events>
+            <sales_quote_item_set_product>
+                <observers>
+                    <semaio_customsku>
+                        <class>semaio_customsku/observer</class>
+                        <method>setCustomSkuOnQuoteItem</method>
+                    </semaio_customsku>
+                </observers>
+            </sales_quote_item_set_product>
+        </events>
     </global>
     <frontend>
         <routers>
@@ -89,22 +99,23 @@
                 </semaio_customsku>
             </modules>
         </translate>
-        <events>
-            <sales_quote_item_set_product>
-                <observers>
-                    <semaio_customsku>
-                        <class>semaio_customsku/observer</class>
-                        <method>setCustomSkuOnQuoteItem</method>
-                    </semaio_customsku>
-                </observers>
-            </sales_quote_item_set_product>
-        </events>
     </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Semaio_CustomSku before="Mage_Adminhtml">Semaio_CustomSku_Adminhtml</Semaio_CustomSku>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <adminhtml>
         <layout>
             <updates>
                 <semaio_customsku>
-                    <file>semaio_customsku.xml</file>
+                    <file>semaio/customsku.xml</file>
                 </semaio_customsku>
             </updates>
         </layout>
