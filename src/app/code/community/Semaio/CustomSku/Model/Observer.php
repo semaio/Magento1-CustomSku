@@ -38,32 +38,6 @@ class Semaio_CustomSku_Model_Observer
     }
 
     /**
-     * Adminhtml block html before
-     *
-     * @param Varien_Event_Observer $observer Observer
-     */
-    public function adminhtmlBlockHtmlBefore(Varien_Event_Observer $observer)
-    {
-//        $block = $observer->getEvent()->getBlock();
-
-//        $block = $observer->getBlock();
-//        if ($block instanceof Mage_Adminhtml_Block_Cms_Block_Edit) {
-//            switch ($block->getType()) {
-//                case 'adminhtml/sales_order_create_form_account': // Specify which form to add custom field to.
-//                    $form = $block->getForm();
-//                    $fieldset = $form->getElement('main'); // Fieldset name may vary.
-//                    $fieldset->addField('reference', 'text', array(
-//                            'name' => 'reference',
-//                            'label' => Mage::helper('cms')->__('Reference'),
-//                            'title' => Mage::helper('cms')->__('Reference')
-//                        )
-//                    );
-//                    break;
-//            }
-//        }
-    }
-
-    /**
      * Retrieve the factory class
      *
      * @return Semaio_CustomSku_Model_Factory
