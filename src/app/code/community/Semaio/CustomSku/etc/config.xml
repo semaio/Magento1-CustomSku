@@ -128,16 +128,6 @@
                 </semaio_customsku>
             </modules>
         </translate>
-        <events>
-            <adminhtml_block_html_before>
-                <observers>
-                    <semaio_customsku>
-                        <class>semaio_customsku/observer</class>
-                        <method>adminhtmlBlockHtmlBefore</method>
-                    </semaio_customsku>
-                </observers>
-            </adminhtml_block_html_before>
-        </events>
     </adminhtml>
     <phpunit>
         <suite>
