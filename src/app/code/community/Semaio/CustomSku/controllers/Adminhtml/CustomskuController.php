@@ -15,9 +15,8 @@
  */
 class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Controller_Action
 {
-
     /**
-     *
+     * Edit a custom SKU
      */
     public function editAction()
     {
@@ -28,10 +27,6 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
         $customSku = Mage::getModel('semaio_customsku/customSku')->load($customSkuId);
         Mage::register('current_customsku', $customSku);
 
-//        $this->_addBreadcrumb(
-//            Mage::helper('semaio_customsku')->__('Customer'),
-//            Mage::helper('semaio_customsku')->__('Custom SKUs')
-//        );
 
         $this->_title($this->__('Custom SKU'));
 
@@ -49,7 +44,7 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
     }
 
     /**
-     *
+     * Save a custom SKU
      */
     public function saveAction()
     {
@@ -77,7 +72,7 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
-       } elseif ($data) {
+        } elseif ($data) {
             try {
                 $productId = str_replace('product/', '', $data['product']);
                 $productSku = Mage::getModel('catalog/product')->load($productId)->getSku();
@@ -97,13 +92,13 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
                     $helper->getSession()->addError($helper->__('Error during save. Please try again.'));
                 }
             }
-       }
+        }
 
         $this->_redirect('*/customer/edit', array('id' => $model->getData('customer_id'), 'active_tab' => 'customsku'));
     }
 
     /**
-     *
+     * Mass delete custom SKUs
      */
     public function massDeleteAction()
     {
@@ -111,8 +106,7 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
 
         if (!is_array($customSkuIds)) {
             $this->_getSession()->addError($this->_getHelper()->__('Please select custom SKU(s)'));
-        }
-        else {
+        } else {
             try {
                 foreach ($customSkuIds as $customSkuId) {
                     $customSku = Mage::getModel('semaio_customsku/customSku')->load($customSkuId);
@@ -151,9 +145,12 @@ class Semaio_CustomSku_Adminhtml_CustomskuController extends Mage_Adminhtml_Cont
     }
 
     /**
+     * Check if editing the custom sku is allowed
+     *
      * @return bool
      */
-    protected function _isAllowed(){
+    protected function _isAllowed()
+    {
         return Mage::getSingleton('admin/session')->isAllowed('customer/manage');
     }
 }

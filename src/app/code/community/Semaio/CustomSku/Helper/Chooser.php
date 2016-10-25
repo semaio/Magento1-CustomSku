@@ -11,15 +11,13 @@
  */
 
 /**
- * based on
+ * Class Semaio_CustomSku_Helper_Chooser
  *
- * @author      Tsvetan Stoychev <tsvetan.stoychev@jarlssen.de>
- * @website     http://www.jarlssen.de
+ * Based on https://github.com/SessionDE/Jarlssen_ChooserWidget
  */
-
 class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
 {
-    const PRODUCT_CHOOSER_BLOCK_ALIAS    = 'adminhtml/catalog_product_widget_chooser';
+    const PRODUCT_CHOOSER_BLOCK_ALIAS = 'adminhtml/catalog_product_widget_chooser';
 
     protected $_requiredConfigValues = array('input_name');
 
@@ -27,10 +25,9 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
      * Wrapper function, that creates product chooser button in the
      * generic Mage Admin forms
      *
-     * @param Mage_Core_Model_Abstract $dataModel
-     * @param Varien_Data_Form_Element_Fieldset $fieldset
-     * @param array $config
-     *
+     * @param  Mage_Core_Model_Abstract          $dataModel Model
+     * @param  Varien_Data_Form_Element_Fieldset $fieldset  Fieldset
+     * @param  array                             $config    Config
      * @return Semaio_CustomSku_Helper_Chooser
      */
     public function createProductChooser($dataModel, $fieldset, $config)
@@ -44,11 +41,10 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
      * Wrapper function, that creates custom chooser button in the
      * generic Mage Admin forms
      *
-     * @param Mage_Core_Model_Abstract $dataModel
-     * @param Varien_Data_Form_Element_Fieldset $fieldset
-     * @param array $config
-     * @param string $blockAlias
-     *
+     * @param  Mage_Core_Model_Abstract          $dataModel  Model
+     * @param  Varien_Data_Form_Element_Fieldset $fieldset   Fieldset
+     * @param  array                             $config     Config
+     * @param  string                            $blockAlias Block Alias
      * @return Semaio_CustomSku_Helper_Chooser
      */
     public function createChooser($dataModel, $fieldset, $config, $blockAlias)
@@ -79,8 +75,8 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
      * The ideas in the both classes are interesting and this is a good example how we
      * can reuse core components.
      *
-     * !!! The best solution would be to create our class that extends
-     * Mage_Adminhtml_Block_Widget_Form and to do similar tricks that they do in Mage_Widget_Block_Adminhtml_Widget_Options
+     * !!! The best solution would be to create our class that extends Mage_Adminhtml_Block_Widget_Form
+     * and to do similar tricks that they do in Mage_Widget_Block_Adminhtml_Widget_Options
      * So we can reuse this class for the forms, that we need different kind of choosers.
      * Right now we can't reuse their Mage_Widget_Block_Adminhtml_Widget_Options, because there
      * are too many dependencies of the widget config and this class can't be reused easy out of the widget context.
@@ -88,11 +84,10 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
      * Also it was needed to include some extra JS files by layout update: <update handle="editor"/>
      * In favour to fire the choose grid after the choose button is pressed.
      *
-     * @param Mage_Core_Model_Abstract $dataModel
-     * @param Varien_Data_Form_Element_Fieldset $fieldset
-     * @param array $config
-     * @param string $blockAlias
-     *
+     * @param  Mage_Core_Model_Abstract          $dataModel  Model
+     * @param  Varien_Data_Form_Element_Fieldset $fieldset   Fieldset
+     * @param  array                             $config     Config
+     * @param  string                            $blockAlias Block Alias
      * @return Semaio_CustomSku_Helper_Chooser
      */
     protected function _prepareChooser($dataModel, $fieldset, $config, $blockAlias)
@@ -107,8 +102,6 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
             ->setFieldsetId($fieldset->getId())
             ->prepareElementHtml($element);
 
-//        $this->_fixChooserAjaxUrl($element);
-
         return $this;
     }
 
@@ -117,10 +110,9 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
      * the hidden input, that is created, when we have form element
      * from type label
      *
-     * @param Mage_Core_Model_Abstract $dataModel
-     * @param Varien_Data_Form_Element_Fieldset $fieldset
-     * @param array $config
-     *
+     * @param  Mage_Core_Model_Abstract          $dataModel Model
+     * @param  Varien_Data_Form_Element_Fieldset $fieldset  Fieldset
+     * @param  array                             $config    Config
      * @return Varien_Data_Form_Element_Abstract
      */
     protected function _createFormElement($dataModel, $fieldset, $config)
@@ -128,7 +120,7 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
         $isRequired = (isset($config['required']) && true === $config['required']) ? true : false;
 
         $inputConfig = array(
-            'name'  => $config['input_name'],
+            'name' => $config['input_name'],
             'label' => $config['input_label'],
             'required' => $isRequired
         );
@@ -146,7 +138,7 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
 
         if ($id = $dataModel->getData($element->getId())) {
             $element->setValue($element->getName() . '/' . $id);
-            $dataModel->setData($element->getId(),'');
+            $dataModel->setData($element->getId(), '');
         }
 
         return $element;
@@ -155,19 +147,17 @@ class Semaio_CustomSku_Helper_Chooser extends Mage_Core_Helper_Abstract
     /**
      * Prepare config in format, that is needed for the chooser "factory"
      *
-     * @param array $config
-     * @param string $blockAlias
-     *
+     * @param  array  $config     Config
+     * @param  string $blockAlias Block Alias
      * @return array
      */
     protected function _prepareChooserConfig($config, $blockAlias)
     {
         return array(
-            'button' =>
-                array(
-                    'open' => $config['button_text'],
-                    'type' => $blockAlias
-                )
+            'button' => array(
+                'open' => $config['button_text'],
+                'type' => $blockAlias
+            )
         );
     }
 }

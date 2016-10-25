@@ -17,7 +17,6 @@ class Semaio_CustomSku_Block_Adminhtml_Customer_Edit_CustomSku_Grid extends Mage
 {
     /**
      * Set grid params
-     *
      */
     public function __construct()
     {
@@ -29,8 +28,7 @@ class Semaio_CustomSku_Block_Adminhtml_Customer_Edit_CustomSku_Grid extends Mage
     /**
      * Put 'add' button for entity creation before grid output
      *
-     * @param string $html
-     *
+     * @param  string $html HTML
      * @return string
      */
     protected function _afterToHtml($html)
@@ -70,62 +68,50 @@ class Semaio_CustomSku_Block_Adminhtml_Customer_Edit_CustomSku_Grid extends Mage
     protected function _prepareColumns()
     {
         $this->addColumn('id', array(
-            'header'            => Mage::helper('semaio_customsku')->__('ID'),
-            'index'             => 'id',
-            'width'             => '100px',
-            'type'              => 'text'
+            'header' => Mage::helper('semaio_customsku')->__('ID'),
+            'index' => 'id',
+            'width' => '100px',
+            'type' => 'text'
         ));
 
         $this->addColumn('sku', array(
-            'header'            => Mage::helper('semaio_customsku')->__('Sku'),
-            'index'             => 'sku',
-            'type'              => 'text'
+            'header' => Mage::helper('semaio_customsku')->__('Sku'),
+            'index' => 'sku',
+            'type' => 'text'
         ));
 
         $this->addColumn('custom_sku', array(
-            'header'            => Mage::helper('semaio_customsku')->__('Custom SKU'),
-            'index'             => 'custom_sku',
-            'type'              => 'text',
-            'escape'            => true
+            'header' => Mage::helper('semaio_customsku')->__('Custom SKU'),
+            'index' => 'custom_sku',
+            'type' => 'text',
+            'escape' => true
         ));
-
-//        $this->addColumn('action_edit', array(
-//            'header'   => $this->helper('semaio_customsku')->__('Action'),
-//            'width'    => 15,
-//            'sortable' => false,
-//            'filter'   => false,
-//            'type'     => 'action',
-//            'actions'  => array(
-//                array(
-//                    'url'     => $this->getUrl('*/customsku/edit', array('customsku_id' => $item->getId())),
-//                    'url'     => Mage::helper('adminhtml')->getUrl('*/customsku/edit'),
-//                    'caption' => $this->helper('semaio_customsku')->__('Edit'),
-//                ),
-//            )
-//        ));
 
         return parent::_prepareColumns();
     }
 
     /**
+     * Prepare the massaction block
+     *
      * @return Mage_Adminhtml_Block_Widget_Grid
      */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('id');
-        $this->getMassactionBlock()->setFormFieldName('customsku');
 
+        $this->getMassactionBlock()->setFormFieldName('customsku');
         $this->getMassactionBlock()->addItem('delete', array(
-            'label'        => Mage::helper('semaio_customsku')->__('Delete'),
-            'url'          => $this->getUrl('*/customsku/massDelete')
+            'label' => Mage::helper('semaio_customsku')->__('Delete'),
+            'url' => $this->getUrl('*/customsku/massDelete')
         ));
 
         return parent::_prepareMassaction();
     }
 
     /**
-     * @param $item
+     * Retrieve the row url
      *
+     * @param  Varien_Object $item Model
      * @return string
      */
     public function getRowUrl($item)

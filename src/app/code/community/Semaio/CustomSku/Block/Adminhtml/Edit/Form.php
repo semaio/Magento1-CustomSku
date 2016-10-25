@@ -16,17 +16,18 @@
 class Semaio_CustomSku_Block_Adminhtml_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
     /**
+     * Prepare the custom sku form
+     *
      * @return Mage_Adminhtml_Block_Widget_Form
      */
     protected function _prepareForm()
     {
         $form = new Varien_Data_Form(array(
-            'id'        => 'edit_form',
-            'action'    => $this->getData('action'),
-            'method'    => 'post',
-            'enctype'   => 'multipart/form-data'
+            'id' => 'edit_form',
+            'action' => $this->getData('action'),
+            'method' => 'post',
+            'enctype' => 'multipart/form-data'
         ));
-//        $form->setHtmlIdPrefix('_customsku'); // $chooserHelper bug
 
         $customer = Mage::registry('current_customer');
         $customSku = Mage::registry('current_customsku');
@@ -41,39 +42,35 @@ class Semaio_CustomSku_Block_Adminhtml_Edit_Form extends Mage_Adminhtml_Block_Wi
             $customSku->setData('customer_id', $customer->getId());
         }
 
-        $form->addField('customer_id', 'hidden', array(
-            'name' => 'customer_id',
-        ));
+        $form->addField('customer_id', 'hidden', array('name' => 'customer_id'));
         $form->setValues($customSku->getData());
 
-        $fieldset = $form->addFieldset('customsku', array('legend'=>Mage::helper('semaio_customsku')->__('Custom SKU')));
-
-        $fieldset->addField('customer', 'label', array(
-            'label'     => Mage::helper('semaio_customsku')->__('Customer'),
-            'value'     => $customer->getName(),
+        $fieldset = $form->addFieldset('customsku', array(
+            'legend' => Mage::helper('semaio_customsku')->__('Custom SKU')
         ));
 
-        /*
-         * Generate product chooser widget button
-         */
+        $fieldset->addField('customer', 'label', array(
+            'label' => Mage::helper('semaio_customsku')->__('Customer'),
+            'value' => $customer->getName(),
+        ));
 
         $productConfig = array(
-            'input_name'  => 'product',
+            'input_name' => 'product',
             'input_label' => $this->__('Product'),
             'button_text' => $this->__('Select Product...'),
-            'required'    => true,
-            'input_id'    => 'entity_id'
+            'required' => true,
+            'input_id' => 'entity_id'
         );
 
         $chooserHelper = Mage::helper('semaio_customsku/chooser');
         $chooserHelper->createProductChooser($product, $fieldset, $productConfig);
 
         $fieldset->addField('customsku2', 'text', array(
-            'label'     => Mage::helper('semaio_customsku')->__('Custom SKU'),
-            'class'     => 'required-entry',
-            'required'  => true,
-            'name'      => 'customsku',
-            'value'     => $customSku->getCustomSku(),
+            'label' => Mage::helper('semaio_customsku')->__('Custom SKU'),
+            'class' => 'required-entry',
+            'required' => true,
+            'name' => 'customsku',
+            'value' => $customSku->getCustomSku(),
         ));
 
         $form->setUseContainer(true);

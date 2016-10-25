@@ -15,10 +15,8 @@
  */
 class Semaio_CustomSku_Block_Adminhtml_Customer_Edit_Tab_Customsku
     extends Semaio_CustomSku_Block_Adminhtml_Customer_Edit_CustomSku_Grid
-        implements Mage_Adminhtml_Block_Widget_Tab_Interface
-
+    implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
-
     /**
      * Semaio_CustomSku_Block_Adminhtml_Customer_Edit_Tab_Customsku constructor.
      */

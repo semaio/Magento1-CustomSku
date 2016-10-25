@@ -23,21 +23,19 @@ class Semaio_CustomSku_Block_Adminhtml_Edit extends Mage_Adminhtml_Block_Widget_
         $this->_headerText = Mage::helper('semaio_customsku')->__('Custom SKUs');
         $this->_objectId = 'customer_id';
         $this->_controller = 'customsku';
-
         parent::__construct();
-
-        /*
-         * Use massDeleteAction instead
-         */
         $this->_removeButton('delete');
     }
 
     /**
+     * Inject the form into the layout
+     *
      * @return Mage_Core_Block_Abstract
      */
     protected function _prepareLayout()
     {
-        $this->setChild('form',
+        $this->setChild(
+            'form',
             $this->getLayout()->createBlock('semaio_customsku/adminhtml_edit_form', 'semaio.customsku.edit.form')
         );
 
@@ -45,6 +43,8 @@ class Semaio_CustomSku_Block_Adminhtml_Edit extends Mage_Adminhtml_Block_Widget_
     }
 
     /**
+     * Retrieve the back url
+     *
      * @return string
      */
     public function getBackUrl()
@@ -54,6 +54,8 @@ class Semaio_CustomSku_Block_Adminhtml_Edit extends Mage_Adminhtml_Block_Widget_
     }
 
     /**
+     * Retrieve the delete url
+     *
      * @return string
      */
     public function getDeleteUrl()
