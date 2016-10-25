@@ -1,20 +1,32 @@
 <?xml version="1.0"?>
 <!--
-/**
- * This file is part of the Semaio_CustomSku module.
- *
- * See LICENSE.md bundled with this module for license details.
- *
- * @category  Semaio
- * @package   Semaio_CustomSku
- * @author    semaio GmbH <hello@semaio.com>
- * @copyright 2016 semaio GmbH (http://www.semaio.com)
- */
--->
+  ~ This file is part of the Semaio_CustomSku module.
+  ~
+  ~ See LICENSE.md bundled with this module for license details.
+  ~
+  ~ @category  Semaio
+  ~ @package   Semaio_CustomSku
+  ~ @author    Nicolas Graeter <info@graeter-it.de>
+  ~ @copyright 2016 semaio GmbH (http://www.semaio.com)
+  -->
 <layout>
+    <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <action method="addTabAfter">
+                <name>customsku</name>
+                <block>semaio_customsku/adminhtml_customer_edit_tab_customsku</block>
+                <after>orders</after>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+
     <adminhtml_sales_order_view>
         <reference name="order_item_extra_info">
-            <block type="semaio_customsku/adminhtml_info" name="semaio.customsku.info" template="semaio/customsku/info.phtml" />
+            <block type="semaio_customsku/adminhtml_sales_order_item_info" name="semaio.customsku.info" template="semaio/customsku/info.phtml" />
         </reference>
     </adminhtml_sales_order_view>
+
+    <adminhtml_customsku_edit>
+        <update handle="editor"/>
+    </adminhtml_customsku_edit>
 </layout>

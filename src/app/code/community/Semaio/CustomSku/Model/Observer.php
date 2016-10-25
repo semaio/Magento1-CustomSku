@@ -38,17 +38,6 @@ class Semaio_CustomSku_Model_Observer
     }
 
     /**
-     * Adminhtml block html before
-     *
-     * @param Varien_Event_Observer $observer Observer
-     */
-    public function adminhtmlBlockHtmlBefore(Varien_Event_Observer $observer)
-    {
-        $block = $observer->getEvent()->getBlock();
-        // TODO: ???
-    }
-
-    /**
      * Retrieve the factory class
      *
      * @return Semaio_CustomSku_Model_Factory

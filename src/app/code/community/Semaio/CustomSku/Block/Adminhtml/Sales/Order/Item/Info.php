@@ -13,7 +13,7 @@
 /**
  * Class Semaio_CustomSku_Block_Adminhtml_Info
  */
-class Semaio_CustomSku_Block_Adminhtml_Info extends Mage_Adminhtml_Block_Template
+class Semaio_CustomSku_Block_Adminhtml_Sales_Order_Item_Info extends Mage_Adminhtml_Block_Template
 {
     /**
      * Retrieve the custom sku

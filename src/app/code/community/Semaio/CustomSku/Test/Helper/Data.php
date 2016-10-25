@@ -97,9 +97,11 @@ class Semaio_CustomSku_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case_Contro
         $model = new Varien_Object();
 
         $model->setData('customer_id', 2);
+        /** @noinspection PhpParamsInspection */
         $this->assertFalse($this->_helper->hasCorrectCustomerId($model));
 
         $model->setData('customer_id', 1);
+        /** @noinspection PhpParamsInspection */
         $this->assertTrue($this->_helper->hasCorrectCustomerId($model));
     }
 }
